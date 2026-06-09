@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI升级地图：帮助零基础普通人按目标学习AI工具、Codex、工作流、Agent和AI变现。"
+    />
+    <title>AI升级地图 | 普通人AI学习导航</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#diagnosis" aria-label="AI升级地图首页">
+        <span class="brand-mark" aria-hidden="true">AI</span>
+        <span>
+          <strong>AI升级地图</strong>
+          <small>零基础到可交付</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#route">升级路线</a>
+        <a href="#missions">课程任务</a>
+        <a href="#codex">Codex急救</a>
+        <a href="#money">变现路线</a>
+      </nav>
+      <a class="top-action" href="#diagnosis">开始诊断</a>
+    </header>
+
+    <main>
+      <section class="hero" id="diagnosis" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">普通人的AI学习任务面板</p>
+          <h1 id="hero-title">先看你的目标，再决定今天该学哪一关</h1>
+          <p class="lead">
+            不再从零散教程里碰运气。选择你的目标、基础和时间，系统会给出当前等级、通关标准、下一步课程、常见卡点和最低变现路径。
+          </p>
+
+          <form class="diagnosis-form" id="pathForm">
+            <label>
+              <span>我现在最想达成</span>
+              <select id="goalSelect" name="goal">
+                <option value="money">用AI做副业或接单变现</option>
+                <option value="codex">装好并真正用会 Codex / AI 编程</option>
+                <option value="workflow">搭自动化工作流，少做重复劳动</option>
+                <option value="efficiency">提高学习、办公和内容效率</option>
+                <option value="agent">理解并做出自己的智能体 Agent</option>
+              </select>
+            </label>
+
+            <label>
+              <span>我的当前基础</span>
+              <select id="baseSelect" name="base">
+                <option value="zero">完全零基础，只会刷短视频/微信</option>
+                <option value="chat">用过 ChatGPT/豆包，但不会系统提问</option>
+                <option value="tools">会几个工具，但做不出稳定作品</option>
+                <option value="build">会一点剪辑/表格/代码，想做项目</option>
+              </select>
+            </label>
+
+            <label>
+              <span>每天能投入</span>
+              <select id="timeSelect" name="time">
+                <option value="20">20分钟：只要最短路径</option>
+                <option value="45">45分钟：能完成一个小任务</option>
+                <option value="90">90分钟：能做作品和复盘</option>
+              </select>
+            </label>
+
+            <label>
+              <span>更偏向哪种变现</span>
+              <select id="trackSelect" name="track">
+                <option value="unsure">还不确定，先让我看清方向</option>
+                <option value="content">内容号 / 短视频 / 图文账号</option>
+                <option value="delivery">PPT、文档、图片、视频交付</option>
+                <option value="automation">自动化、客服、表格、企业流程</option>
+                <option value="product">AI小工具、网站、Agent产品</option>
+              </select>
+            </label>
+
+            <button class="primary-button" type="submit">生成我的升级路线</button>
+          </form>
+        </div>
+
+        <div class="hero-visual" aria-label="AI学习升级地图">
+          <img src="./assets/ai-learning-map.png" alt="从AI新手村到多Agent副本的学习地图插画" />
+          <div class="visual-badge top">
+            <span>当前版本</span>
+            <strong>MVP路线库</strong>
+          </div>
+          <div class="visual-badge bottom">
+            <span>覆盖路径</span>
+            <strong>工具 → 工作流 → Agent</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="result-band" aria-live="polite">
+        <div class="result-summary">
+          <span class="level-chip" id="currentLevelChip">Lv0 新手村</span>
+          <div>
+            <h2 id="resultTitle">先完成诊断，领取第一条路线</h2>
+            <p id="resultSummary">你会看到起点等级、下一关任务、最低够用标准和最容易卡住的地方。</p>
+          </div>
+        </div>
+        <div class="progress-box">
+          <span id="progressLabel">路线匹配度 0%</span>
+          <div class="progress-track"><span id="progressFill"></span></div>
+        </div>
+      </section>
+
+      <section class="route-section" id="route" aria-labelledby="route-title">
+        <div class="section-heading">
+          <p class="eyebrow">升级地图</p>
+          <h2 id="route-title">从AI小白到能做AI项目的7级路线</h2>
+          <p>每一关只回答三件事：学什么、做到什么程度算过关、别在什么地方浪费时间。</p>
+        </div>
+        <div class="level-map" id="levelMap"></div>
+      </section>
+
+      <section class="mission-section" id="missions" aria-labelledby="missions-title">
+        <div class="section-heading">
+          <p class="eyebrow">课程任务</p>
+          <h2 id="missions-title">按目标筛选今天该做的任务</h2>
+        </div>
+        <div class="filter-row" role="group" aria-label="课程筛选">
+          <button class="filter-button active" data-filter="all" type="button">全部</button>
+          <button class="filter-button" data-filter="beginner" type="button">零基础</button>
+          <button class="filter-button" data-filter="codex" type="button">Codex</button>
+          <button class="filter-button" data-filter="workflow" type="button">工作流</button>
+          <button class="filter-button" data-filter="agent" type="button">Agent</button>
+          <button class="filter-button" data-filter="money" type="button">变现</button>
+        </div>
+        <div class="mission-grid" id="missionGrid"></div>
+      </section>
+
+      <section class="tools-section" id="tools" aria-labelledby="tools-title">
+        <div class="section-heading">
+          <p class="eyebrow">工具百科</p>
+          <h2 id="tools-title">不用追热点，先按用途认识工具</h2>
+          <p>工具会变化，但用途不会。先学会判断“这个工具解决什么问题”，再决定是否深入。</p>
+        </div>
+        <div class="tool-controls">
+          <input id="toolSearch" type="search" placeholder="搜索：Codex、Dify、PPT、视频、自动化..." />
+          <div class="tool-tabs" role="group" aria-label="工具分类">
+            <button class="tool-tab active" data-category="all" type="button">全部</button>
+            <button class="tool-tab" data-category="chat" type="button">对话研究</button>
+            <button class="tool-tab" data-category="content" type="button">内容创作</button>
+            <button class="tool-tab" data-category="code" type="button">AI编程</button>
+            <button class="tool-tab" data-category="workflow" type="button">工作流</button>
+            <button class="tool-tab" data-category="agent" type="button">Agent</button>
+          </div>
+        </div>
+        <div class="tool-grid" id="toolGrid"></div>
+      </section>
+
+      <section class="codex-section" id="codex" aria-labelledby="codex-title">
+        <div class="section-heading">
+          <p class="eyebrow">安装急救站</p>
+          <h2 id="codex-title">Codex 从安装到第一次成功交付</h2>
+          <p>按“能不能跑起来、能不能读项目、能不能改文件、能不能验证”拆，不让新手在群里到处问。</p>
+        </div>
+        <div class="codex-layout">
+          <ol class="checklist" id="codexChecklist"></ol>
+          <div class="rescue-panel">
+            <h3>最常见的5个卡点</h3>
+            <div class="accordion" id="blockerList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="money-section" id="money" aria-labelledby="money-title">
+        <div class="section-heading">
+          <p class="eyebrow">变现路线</p>
+          <h2 id="money-title">别一开始就卖课，先做能交付的小结果</h2>
+          <p>每条路线都标出最低等级、可交付成果和第一单验证动作。</p>
+        </div>
+        <div class="money-grid" id="moneyGrid"></div>
+      </section>
+
+      <section class="faq-section" aria-labelledby="faq-title">
+        <div class="section-heading">
+          <p class="eyebrow">小白卡点</p>
+          <h2 id="faq-title">学AI最容易掉进去的坑</h2>
+        </div>
+        <div class="faq-grid" id="faqGrid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>AI升级地图是第一版静态MVP：先解决路线混乱、教程零散、安装卡点和学习动力不足。</p>
+      <a href="#diagnosis">重新诊断</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
