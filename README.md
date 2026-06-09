@@ -2,6 +2,14 @@
 
 一个帮助零基础普通人系统学习 AI 的静态网站。用户选择目标、基础和可投入时间后，网站会给出当前等级、学习路线、课程任务、Codex 安装排查、工具百科和变现路径。
 
+## 公网地址
+
+稳定访问链接：
+
+```text
+https://robinjoshua1170-wq.github.io/ai-level-map/
+```
+
 ## 本地运行
 
 ```bash
@@ -50,3 +58,9 @@ start_public_ai_map.cmd
 - `vercel.json`
 
 部署到 Netlify 或 Vercel 时，优先上传或发布 `dist/`，不要发布整个工作区。
+
+当前已发布到 GitHub Pages：
+
+```text
+https://github.com/robinjoshua1170-wq/ai-level-map
+```
